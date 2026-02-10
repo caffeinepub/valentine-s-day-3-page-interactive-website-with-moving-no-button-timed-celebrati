@@ -1,0 +1,91 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Smooth always-visible moving No button, live fireworks bursts, and finale image swap",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "summary": "Keep the Page 1 “No” button continuously visible while it moves smoothly and relocates instantly on click within bounds.",
+      "acceptanceCriteria": [
+        "On Page 1, the “No” button is continuously visible while moving; it does not flicker, hide, unmount/remount, or jump via disappearance/reappearance.",
+        "The “No” button stays within the visible container/viewport bounds (does not move off-screen).",
+        "Clicking/tapping the “No” button immediately moves it to a new random position (in addition to its continuous movement)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useMovingNoButton.ts",
+          "operation": "modify",
+          "description": "Replace interval-based teleporting with requestAnimationFrame-driven continuous motion (e.g., smooth interpolation toward a target) while keeping the button mounted and visible; on click, immediately choose a new in-bounds random target and continue motion from the current position; clamp all positions to container bounds and handle resize/reflow safely."
+        },
+        {
+          "path": "frontend/src/pages/QuestionPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the “No” button is always rendered and positioned in a way that avoids flicker (prefer transform-based positioning for smoother motion); keep it constrained within the container and still relocates immediately on click. Use the shadcn-ui Button component to keep consistent button styling/behavior. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Upgrade Page 2 and Page 3 fireworks background from a static pulsing overlay to a live, continuous burst animation that doesn’t block interactions.",
+      "acceptanceCriteria": [
+        "On Page 2 and Page 3, fireworks visually appear as repeated bursts/explosions over time (not a static image overlay with opacity/scale changes).",
+        "The fireworks animation runs continuously without user interaction and does not block clicks on foreground content.",
+        "Performance remains acceptable on typical laptops/phones (no severe stutter or freezing during the 5-second celebration and on the finale page)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/FireworksBackground.tsx",
+          "operation": "modify",
+          "description": "Replace the current pulsing background-image overlay approach with a lightweight live fireworks burst animation layer (e.g., canvas-based particles or DOM particles) that continuously spawns bursts over time; keep pointer-events disabled and ensure it sits behind page content."
+        },
+        {
+          "path": "frontend/src/hooks/useFireworksAnimation.ts",
+          "operation": "create",
+          "description": "Create a reusable hook to drive the live fireworks animation (spawn timing, burst parameters, resize handling, and cleanup) optimized for performance on phones/laptops."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Adjust/remove reliance on the existing fireworks overlay pulse styles for Page 2/3; add any minimal, reusable CSS utilities needed for the new fireworks burst layer (keeping clicks unblocked and layering correct)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Replace the Page 3 finale video with the uploaded image IMG_6912.jpeg while keeping the caption and styling, with a safe fallback if missing.",
+      "acceptanceCriteria": [
+        "Page 3 renders an image (not a video) centered in the existing finale card/layout, with the caption “This could be us🤭” displayed below it.",
+        "The image source uses the uploaded file name \"IMG_6912.jpeg\" as the displayed asset.",
+        "If the image cannot be loaded (missing file path), show a non-blocking fallback UI message indicating the image will appear once uploaded, without breaking the page layout.",
+        "Fireworks remain visible/animated in the background on Page 3."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/IMG_6912.jpeg",
+          "operation": "create",
+          "description": "Add the uploaded finale image asset so the app can load it as a static file: frontend/public/assets/IMG_6912.jpeg."
+        },
+        {
+          "path": "frontend/src/pages/FinalePage.tsx",
+          "operation": "modify",
+          "description": "Replace the <video> with an <img> pointing to the static asset named IMG_6912.jpeg; keep the existing card/layout and caption text “This could be us🤭”; add an onError-driven, non-blocking fallback message when the image can’t be loaded; keep FireworksBackground rendered behind content."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Update documentation to describe the finale image (filename and placement under frontend/public) instead of a video.",
+      "acceptanceCriteria": [
+        "frontend/README.md no longer instructs users to upload a finale video file; it instead documents using the finale image.",
+        "README explicitly documents the expected filename (IMG_6912.jpeg) and the target directory path under frontend/public where it must be placed so the app can load it."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/README.md",
+          "operation": "modify",
+          "description": "Update docs to replace the video setup section with instructions to place the finale image at frontend/public/assets/IMG_6912.jpeg and note the fallback behavior if it’s missing."
+        }
+      ]
+    }
+  ]
+}

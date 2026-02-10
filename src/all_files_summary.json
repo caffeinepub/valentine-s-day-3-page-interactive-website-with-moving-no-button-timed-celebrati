@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Defines an empty Motoko actor with no methods.",
+  "feature_evidence.json": "Lists feature evidence entries mapping features to related frontend files and tests.",
+  "frontend-file-summaries.txt": "Contains prewritten one‑sentence summaries for various frontend source files.",
+  "frontend/index.css": "Defines Tailwind base styles and Valentine-themed OKLCH color variables for light and dark modes.",
+  "frontend/index.html": "Basic HTML entry point loading the React app via main.tsx.",
+  "frontend/README.md": "Explains the three‑page flow and how to add the finale image asset.",
+  "frontend/src/App.tsx": "Controls navigation between question, celebration, and finale pages using local state.",
+  "frontend/src/components/FireworksBackground.tsx": "Canvas component that runs the fireworks animation hook as a fixed background overlay.",
+  "frontend/src/components/ValentineLayout.tsx": "Page layout wrapper adding themed background, gradient overlay, and footer attribution.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor tied to Internet Identity, refetching on identity changes.",
+  "frontend/src/hooks/useFireworksAnimation.ts": "Implements canvas-based fireworks with rockets, explosions, particles, and continuous animation.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides authentication context using Internet Identity with login, clear, and identity persistence.",
+  "frontend/src/hooks/useMovingNoButton.ts": "Provides a hook that animates a button to move smoothly within a container and jump to new random positions on click or timed intervals.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file exporting nothing.",
+  "frontend/src/index.css": "Defines Tailwind base styles and extensive Valentine-themed CSS variables and utility classes.",
+  "frontend/src/main.tsx": "Bootstraps the React app with QueryClient and InternetIdentity providers and loads App.",
+  "frontend/src/pages/CelebrationPage.tsx": "Shows a 5‑second celebration screen with animated hearts and fireworks before triggering onComplete.",
+  "frontend/src/pages/FinalePage.tsx": "Displays a finale image with fallback text and Valentine styling over a fireworks background.",
+  "frontend/src/pages/QuestionPage.tsx": "Renders the main question with a Yes button and a moving No button controlled by useMovingNoButton.",
+  "frontend/tailwind.config.js": "Configures Tailwind theme extensions including Valentine colors, fonts, and plugins.",
+  "project_state.json": "Stores project metadata, requirements, and notes for the Valentine-themed multi-page app."
+}

@@ -1,0 +1,100 @@
+{
+  "kind": "build_request",
+  "title": "Keep “No” button always visible, upgrade fireworks to live bursts, and replace finale video with uploaded image",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "text": "Update Page 1 “No” button behavior so the button remains visible at all times while it moves (no disappearing/reappearing), and it continues to relocate immediately on click.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "The “No” button should be visible at all times, and it should be moving around and not disappearing and showing up."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On Page 1, the “No” button is continuously visible while moving; it does not flicker, hide, unmount/remount, or jump via disappearance/reappearance.",
+        "The “No” button stays within the visible container/viewport bounds (does not move off-screen).",
+        "Clicking/tapping the “No” button immediately moves it to a new random position (in addition to its continuous movement)."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Replace the current fireworks background implementation (static overlay pulse) with a live fireworks bursting animation for Page 2 (Celebration) and Page 3 (Finale).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "The animation of fireworks should be live fireworks bursting."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On Page 2 and Page 3, fireworks visually appear as repeated bursts/explosions over time (not a static image overlay with opacity/scale changes).",
+        "The fireworks animation runs continuously without user interaction and does not block clicks on foreground content.",
+        "Performance remains acceptable on typical laptops/phones (no severe stutter or freezing during the 5-second celebration and on the finale page)."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Change Page 3 (Finale) to display the user-uploaded image IMG_6912.jpeg instead of a video, keeping the caption text “This could be us🤭” and the Valentine/fireworks styling.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "And add this image in the last page instead of the video."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Page 3 renders an image (not a video) centered in the existing finale card/layout, with the caption “This could be us🤭” displayed below it.",
+        "The image source uses the uploaded file name \"IMG_6912.jpeg\" as the displayed asset.",
+        "If the image cannot be loaded (missing file path), show a non-blocking fallback UI message indicating the image will appear once uploaded, without breaking the page layout.",
+        "Fireworks remain visible/animated in the background on Page 3."
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Update project documentation to reflect that Page 3 uses an image instead of a video, including the expected filename and where it should be placed under frontend/public.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/README.md no longer instructs users to upload a finale video file; it instead documents using the finale image.",
+        "README explicitly documents the expected filename (IMG_6912.jpeg) and the target directory path under frontend/public where it must be placed so the app can load it."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui/*.",
+    "Backend must remain a single Motoko actor in backend/main.mo; do not add additional backend services.",
+    "Do not introduce third-party real-time services or external databases."
+  ],
+  "nonGoals": [
+    "Adding new pages or changing the 3-page navigation flow.",
+    "Adding user accounts/authentication changes (Internet Identity behavior remains as-is).",
+    "Adding backend storage or persistence for images/videos."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

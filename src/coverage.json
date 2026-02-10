@@ -1,0 +1,86 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-10T16:23:28.980Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-12",
+        "summary": "Update Page 1 “No” button behavior so the button remains visible at all times while it moves (no disappearing/reappearing), and it continues to relocate immediately on click.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useMovingNoButton.ts",
+          "frontend/src/pages/QuestionPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useMovingNoButton.ts",
+          "frontend/src/pages/QuestionPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Replace the current fireworks background implementation (static overlay pulse) with a live fireworks bursting animation for Page 2 (Celebration) and Page 3 (Finale).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/FireworksBackground.tsx",
+          "frontend/src/hooks/useFireworksAnimation.ts",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/FireworksBackground.tsx",
+          "frontend/src/hooks/useFireworksAnimation.ts",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Change Page 3 (Finale) to display the user-uploaded image IMG_6912.jpeg instead of a video, keeping the caption text “This could be us🤭” and the Valentine/fireworks styling.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/IMG_6912.jpeg",
+          "frontend/src/pages/FinalePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/IMG_6912.jpeg",
+          "frontend/src/pages/FinalePage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-15",
+        "summary": "Update project documentation to reflect that Page 3 uses an image instead of a video, including the expected filename and where it should be placed under frontend/public.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/README.md"
+        ],
+        "matchedFiles": [
+          "frontend/README.md"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/README.md",
+    "frontend/public/assets/IMG_6912.jpeg",
+    "frontend/src/components/FireworksBackground.tsx",
+    "frontend/src/hooks/useFireworksAnimation.ts",
+    "frontend/src/hooks/useMovingNoButton.ts",
+    "frontend/src/index.css",
+    "frontend/src/pages/FinalePage.tsx",
+    "frontend/src/pages/QuestionPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

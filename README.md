@@ -1,2 +1,3 @@
-# valentine-s-day-3-page-interactive-website-with-moving-no-button-timed-celebrati
-Exported from Caffeine project: Valentine’s Day 3-page interactive website with moving No button, timed celebration page, and video finale
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

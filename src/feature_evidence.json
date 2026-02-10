@@ -1,0 +1,80 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-page-1-no-button-behavior-so-the-button-remains-visible-at-all-times-while-it-moves-no-disappearing-reappearing-and-it-continues-to-relocate-immediately-on-click",
+      "featureTitle": "Update Page 1 “No” button behavior so the button remains visible at all times while it moves (no disappearing/reappearing), and it continues to relocate immediately on click.",
+      "files": [
+        "frontend/src/hooks/useMovingNoButton.ts",
+        "frontend/src/pages/QuestionPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-the-current-fireworks-background-implementation-static-overlay-pulse-with-a-live-fireworks-bursting-animation-for-page-2-celebration-and-page-3-finale",
+      "featureTitle": "Replace the current fireworks background implementation (static overlay pulse) with a live fireworks bursting animation for Page 2 (Celebration) and Page 3 (Finale).",
+      "files": [
+        "frontend/src/components/FireworksBackground.tsx",
+        "frontend/src/hooks/useFireworksAnimation.ts",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-change-page-3-finale-to-display-the-user-uploaded-image-img-6912-jpeg-instead-of-a-video-keeping-the-caption-text-this-could-be-us-and-the-valentine-fireworks-styling",
+      "featureTitle": "Change Page 3 (Finale) to display the user-uploaded image IMG_6912.jpeg instead of a video, keeping the caption text “This could be us🤭” and the Valentine/fireworks styling.",
+      "files": [
+        "frontend/src/pages/FinalePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-project-documentation-to-reflect-that-page-3-uses-an-image-instead-of-a-video-including-the-expected-filename-and-where-it-should-be-placed-under-frontend-public",
+      "featureTitle": "Update project documentation to reflect that Page 3 uses an image instead of a video, including the expected filename and where it should be placed under frontend/public.",
+      "files": [
+        "frontend/README.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
