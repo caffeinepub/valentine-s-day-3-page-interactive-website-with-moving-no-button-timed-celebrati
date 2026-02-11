@@ -1,100 +1,76 @@
 {
   "kind": "build_request",
-  "title": "Keep “No” button always visible, upgrade fireworks to live bursts, and replace finale video with uploaded image",
+  "title": "Make the “No” button stay next to “Yes”, shrink per click, and disappear after 4 presses",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-12",
-      "text": "Update Page 1 “No” button behavior so the button remains visible at all times while it moves (no disappearing/reappearing), and it continues to relocate immediately on click.",
+      "id": "REQ-1",
+      "text": "Update the Question page so the “No” button is positioned next to the “Yes” button (in the same flex row/column flow) instead of being absolutely positioned and orbiting/moving around it.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "The “No” button should be visible at all times, and it should be moving around and not disappearing and showing up."
+          "Keep the “no” button next to the “yes” button"
         ]
       },
       "acceptanceCriteria": [
-        "On Page 1, the “No” button is continuously visible while moving; it does not flicker, hide, unmount/remount, or jump via disappearance/reappearance.",
-        "The “No” button stays within the visible container/viewport bounds (does not move off-screen).",
-        "Clicking/tapping the “No” button immediately moves it to a new random position (in addition to its continuous movement)."
+        "On the Question page, “No” visually appears adjacent to “Yes” (respecting the existing responsive flex layout).",
+        "The “No” button does not use absolute positioning or animated translate-based positioning.",
+        "The “No” button does not move/orbit around the “Yes” button over time."
       ]
     },
     {
-      "id": "REQ-13",
-      "text": "Replace the current fireworks background implementation (static overlay pulse) with a live fireworks bursting animation for Page 2 (Celebration) and Page 3 (Finale).",
+      "id": "REQ-2",
+      "text": "Implement click tracking for the “No” button on the Question page so that each press makes the “No” button smaller, and after 4 presses the “No” button is no longer visible and cannot be clicked.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "The animation of fireworks should be live fireworks bursting."
+          "it should get smaller after each press and after 4 presses non existent."
         ]
       },
       "acceptanceCriteria": [
-        "On Page 2 and Page 3, fireworks visually appear as repeated bursts/explosions over time (not a static image overlay with opacity/scale changes).",
-        "The fireworks animation runs continuously without user interaction and does not block clicks on foreground content.",
-        "Performance remains acceptable on typical laptops/phones (no severe stutter or freezing during the 5-second celebration and on the finale page)."
+        "Pressing “No” once reduces its visual size compared to the initial state.",
+        "Pressing “No” a second and third time reduces its size further each time.",
+        "After the 4th press, the “No” button is not rendered (or is fully hidden and non-interactive) and cannot receive pointer/keyboard events.",
+        "“Yes” button behavior remains unchanged and continues to call the provided onYesClick handler."
       ]
     },
     {
-      "id": "REQ-14",
-      "text": "Change Page 3 (Finale) to display the user-uploaded image IMG_6912.jpeg instead of a video, keeping the caption text “This could be us🤭” and the Valentine/fireworks styling.",
+      "id": "REQ-3",
+      "text": "Remove (or stop using) the moving/orbiting “No” button behavior for the Question page so it no longer relies on the useMovingNoButton hook for layout/interaction.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "And add this image in the last page instead of the video."
+          "Keep the “no” button next to the “yes” button"
         ]
       },
       "acceptanceCriteria": [
-        "Page 3 renders an image (not a video) centered in the existing finale card/layout, with the caption “This could be us🤭” displayed below it.",
-        "The image source uses the uploaded file name \"IMG_6912.jpeg\" as the displayed asset.",
-        "If the image cannot be loaded (missing file path), show a non-blocking fallback UI message indicating the image will appear once uploaded, without breaking the page layout.",
-        "Fireworks remain visible/animated in the background on Page 3."
-      ]
-    },
-    {
-      "id": "REQ-15",
-      "text": "Update project documentation to reflect that Page 3 uses an image instead of a video, including the expected filename and where it should be placed under frontend/public.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ]
-      },
-      "acceptanceCriteria": [
-        "frontend/README.md no longer instructs users to upload a finale video file; it instead documents using the finale image.",
-        "README explicitly documents the expected filename (IMG_6912.jpeg) and the target directory path under frontend/public where it must be placed so the app can load it."
+        "QuestionPage.tsx no longer uses translate(x,y) positioning from useMovingNoButton for the “No” button.",
+        "No continuous requestAnimationFrame-driven motion affects the “No” button on the Question page.",
+        "The “No” button click handler only performs the shrink/disappear behavior (no orbit angle jump/direction reversal behavior remains in effect on this page)."
       ]
     }
   ],
   "constraints": [
-    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui/*.",
-    "Backend must remain a single Motoko actor in backend/main.mo; do not add additional backend services.",
-    "Do not introduce third-party real-time services or external databases."
+    "Do not edit any files under frontend/src/components/ui (compose them only).",
+    "Do not modify any files listed as immutable in SYSTEM_CONTEXT (e.g., frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Backend must remain single-actor; no backend changes are required for this request."
   ],
   "nonGoals": [
-    "Adding new pages or changing the 3-page navigation flow.",
-    "Adding user accounts/authentication changes (Internet Identity behavior remains as-is).",
-    "Adding backend storage or persistence for images/videos."
+    "Do not add new pages or change the overall multi-page flow (Question -> Celebration -> Finale).",
+    "Do not introduce backend persistence for the “No” press count; it can remain frontend-only state.",
+    "Do not add new animations unrelated to the “No” button shrink/disappear behavior."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

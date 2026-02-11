@@ -1,15 +1,15 @@
 {
   "frontend/src/App.tsx": "Main application component managing three-page state flow (question → celebration → finale) with navigation callbacks.",
-  "frontend/src/pages/QuestionPage.tsx": "First page displaying \"Will you be my valentine?\" with large Yes button and continuously visible, smoothly moving No button using transform-based positioning.",
+  "frontend/src/pages/QuestionPage.tsx": "First page displaying \"Will you be my valentine?\" with large Yes button and adjacent No button that shrinks progressively on each click (using transform scale) and disappears completely after 4 presses, tracked via local state.",
   "frontend/src/pages/CelebrationPage.tsx": "Second page showing \"I knew you would say yes!!\" with heart stickers and fireworks, auto-advancing to finale after 5 seconds.",
-  "frontend/src/pages/FinalePage.tsx": "Final page displaying centered image (IMG_6912.jpeg) with \"This could be us🤭\" caption, fireworks background, and graceful error handling for missing image.",
+  "frontend/src/pages/FinalePage.tsx": "Final page displaying centered image with two-step fallback (IMG_6912-3.jpeg → IMG_6912-4.jpeg), \"This could be us🤭\" caption, fireworks background, and graceful error handling for missing images.",
   "frontend/src/components/ValentineLayout.tsx": "Shared layout wrapper providing Valentine-themed background pattern, gradient overlay, and footer with caffeine.ai attribution across all pages.",
   "frontend/src/components/FireworksBackground.tsx": "Animated fireworks overlay component using canvas with live particle bursts instead of static pulsing images, pointer-events disabled for click-through, with nullable canvas ref.",
-  "frontend/src/hooks/useMovingNoButton.ts": "Custom hook managing smooth continuous No button movement using requestAnimationFrame with interpolation toward random targets, immediate repositioning on click, and proper bounds clamping with nullable ref types.",
+  "frontend/src/hooks/useMovingNoButton.ts": "Custom hook managing smooth continuous circular orbit animation for the No button around the Yes button center using time-based angle advancement via requestAnimationFrame, with dynamic radius calculation that respects container bounds and click handling that instantly jumps to the opposite side of the orbit while reversing direction.",
   "frontend/src/hooks/useQueries.ts": "Empty placeholder file for React Query hooks (backend has no methods for this frontend-only app).",
   "frontend/src/index.css": "Global styles with Valentine's Day OKLCH color palette (pinks/reds/creams), custom CSS variables, and typography setup (removed unused fireworks-pulse animation).",
   "frontend/tailwind.config.js": "Tailwind configuration extended with Valentine color tokens, Poppins/Inter font families, and custom design system for consistent theming.",
-  "frontend/README.md": "Documentation explaining the three-page flow, image setup instructions for IMG_6912.jpeg placement, and development commands.",
+  "frontend/README.md": "Documentation explaining the three-page flow, image setup instructions for IMG_6912-3.jpeg (primary) and IMG_6912-4.jpeg (fallback) placement, and development commands.",
   "frontend/src/hooks/useFireworksAnimation.ts": "Reusable hook driving live canvas-based fireworks animation with particle bursts, physics simulation, and optimized performance for continuous display, accepting nullable canvas ref.",
   "frontend/public/assets/IMG_6912.jpeg": "Finale image asset showing animated characters dancing together."
 }

@@ -1,134 +1,32 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Valentine’s Day themed multi-page website: Page 1 asks “Will you be my valentine?🥺” with Yes/No buttons (Yes larger; No continuously moves but remains visible at all times). Yes navigates to a timed Page 2 celebration with live bursting fireworks/hearts, then auto-advances to Page 3 showing a centered user-provided image and caption “This could be us🤭”, with fireworks and Valentine styling.",
-  "architectural_notes": [
-    "Multi-page flow: Page 1 -> Page 2 (5s timed) -> Page 3",
-    "No button movement must keep the button continuously rendered/visible (avoid off-screen placement and avoid hide/show behavior).",
-    "Fireworks background should be implemented as a live bursting animation rather than a static overlay graphic."
-  ],
-  "known_issues": [
-    "Image asset for Page 3 not yet provided by user (will replace the previously planned video)."
-  ],
-  "isFixRequest": true,
+  "projectStateVersion": 3,
+  "summary": "App UI behavior: keep the “No” button next to the “Yes” button; on each press the “No” button shrinks and after 4 presses it disappears.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-create-a-valentine-s-day-themed-single-page-react-app-with-three-distinct-pages-page-1-question-page-2-celebration-page-3-video-finale-and-clear-navigation-between-them",
-      "title": "Create a Valentine’s Day themed single-page React app with three distinct pages (Page 1 question, Page 2 celebration, Page 3 video finale) and clear navigation between them.",
+      "id": "feature-update-the-question-page-so-the-no-button-is-positioned-next-to-the-yes-button-in-the-same-flex-row-column-flow-instead-of-being-absolutely-positioned-and-orbiting-moving-around-it",
+      "title": "Update the Question page so the “No” button is positioned next to the “Yes” button (in the same flex row/column flow) instead of being absolutely positioned and orbiting/moving around it.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-implement-page-1-ui-center-the-phrase-will-you-be-my-valentine-on-the-page-with-yes-and-no-buttons-placed-below-it-aligned-and-visually-consistent-with-the-valentine-theme",
-      "title": "Implement Page 1 UI: center the phrase “Will you be my valentine?🥺” on the page with “Yes” and “No” buttons placed below it, aligned and visually consistent with the Valentine theme.",
+      "id": "feature-implement-click-tracking-for-the-no-button-on-the-question-page-so-that-each-press-makes-the-no-button-smaller-and-after-4-presses-the-no-button-is-no-longer-visible-and-cannot-be-clicked",
+      "title": "Implement click tracking for the “No” button on the Question page so that each press makes the “No” button smaller, and after 4 presses the “No” button is no longer visible and cannot be clicked.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-on-page-1-render-the-yes-button-at-approximately-3-the-size-of-the-no-button-e-g-width-height-or-overall-area-while-keeping-both-buttons-readable-and-clickable",
-      "title": "On Page 1, render the “Yes” button at approximately 3× the size of the “No” button (e.g., width/height or overall area), while keeping both buttons readable and clickable.",
+      "id": "feature-remove-or-stop-using-the-moving-orbiting-no-button-behavior-for-the-question-page-so-it-no-longer-relies-on-the-usemovingnobutton-hook-for-layout-interaction",
+      "title": "Remove (or stop using) the moving/orbiting “No” button behavior for the Question page so it no longer relies on the useMovingNoButton hook for layout/interaction.",
       "reqIds": [
         "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-page-1-no-button-movement-behavior-the-no-button-must-not-have-a-fixed-position-it-should-continuously-move-around-within-the-visible-page-area-and-also-change-to-a-new-random-position-immediately-when-a-user-presses-clicks-it",
-      "title": "Implement Page 1 “No” button movement behavior: the “No” button must not have a fixed position; it should continuously move around within the visible page area and also change to a new random position immediately when a user presses/clicks it.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-page-1-yes-button-behavior-clicking-yes-navigates-to-page-2",
-      "title": "Implement Page 1 “Yes” button behavior: clicking “Yes” navigates to Page 2.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-page-2-ui-display-the-phrase-i-knew-you-would-say-yes-prominently-and-include-a-valentine-theme-with-heart-visuals-plus-fireworks-style-animated-background",
-      "title": "Implement Page 2 UI: display the phrase “I knew you would say yes!!🤭” prominently and include a Valentine theme with heart visuals plus fireworks-style animated background.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-make-page-2-visible-for-5-seconds-then-automatically-navigate-to-page-3-without-user-input",
-      "title": "Make Page 2 visible for 5 seconds, then automatically navigate to Page 3 without user input.",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-page-3-ui-show-a-video-centered-on-the-page-and-below-it-display-the-phrase-this-could-be-us-keep-fireworks-animation-in-the-background-and-maintain-the-valentine-theme-styling",
-      "title": "Implement Page 3 UI: show a video centered on the page, and below it display the phrase “This could be us🤭”. Keep fireworks animation in the background and maintain the Valentine theme styling.",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-provide-a-clear-mechanism-to-use-the-user-supplied-video-file-for-page-3-e-g-documented-expected-filename-location-under-frontend-public-assets-until-the-user-provides-the-file-use-a-temporary-placeholder-video-asset-path-and-a-non-blocking-fallback-ui-if-the-file-is-missing",
-      "title": "Provide a clear mechanism to use the user-supplied video file for Page 3 (e.g., documented expected filename/location under frontend public assets). Until the user provides the file, use a temporary placeholder video asset path and a non-blocking fallback UI if the file is missing.",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-apply-a-coherent-creative-valentine-s-day-visual-theme-across-all-pages-colors-typography-spacing-and-backgrounds-with-a-consistent-layout-system-avoid-a-blue-purple-dominant-palette",
-      "title": "Apply a coherent, creative Valentine’s Day visual theme across all pages (colors, typography, spacing, and backgrounds) with a consistent layout system. Avoid a blue/purple-dominant palette.",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-required-generated-images-as-static-assets-under-frontend-public-assets-generated-and-reference-them-from-the-ui-where-appropriate-e-g-subtle-background-pattern-and-or-decorative-hearts",
-      "title": "Add required generated images as static assets under frontend/public/assets/generated and reference them from the UI where appropriate (e.g., subtle background pattern and/or decorative hearts).",
-      "reqIds": [
-        "REQ-11"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-page-1-no-button-behavior-so-the-button-remains-visible-at-all-times-while-it-moves-no-disappearing-reappearing-and-it-continues-to-relocate-immediately-on-click",
-      "title": "Update Page 1 “No” button behavior so the button remains visible at all times while it moves (no disappearing/reappearing), and it continues to relocate immediately on click.",
-      "reqIds": [
-        "REQ-12"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-replace-the-current-fireworks-background-implementation-static-overlay-pulse-with-a-live-fireworks-bursting-animation-for-page-2-celebration-and-page-3-finale",
-      "title": "Replace the current fireworks background implementation (static overlay pulse) with a live fireworks bursting animation for Page 2 (Celebration) and Page 3 (Finale).",
-      "reqIds": [
-        "REQ-13"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-change-page-3-finale-to-display-the-user-uploaded-image-img-6912-jpeg-instead-of-a-video-keeping-the-caption-text-this-could-be-us-and-the-valentine-fireworks-styling",
-      "title": "Change Page 3 (Finale) to display the user-uploaded image IMG_6912.jpeg instead of a video, keeping the caption text “This could be us🤭” and the Valentine/fireworks styling.",
-      "reqIds": [
-        "REQ-14"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-project-documentation-to-reflect-that-page-3-uses-an-image-instead-of-a-video-including-the-expected-filename-and-where-it-should-be-placed-under-frontend-public",
-      "title": "Update project documentation to reflect that Page 3 uses an image instead of a video, including the expected filename and where it should be placed under frontend/public.",
-      "reqIds": [
-        "REQ-15"
       ],
       "version": 1
     }
@@ -136,37 +34,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Build Page 1: centered “Will you be my valentine?🥺” text with Yes/No buttons; Yes is 3× size of No; No button moves around the page and changes position when pressed",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Build Page 2: show “I knew you would say yes!!🤭” with heart + fireworks background animation; display for 5 seconds then automatically navigate to Page 3",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Update Page 1 No button behavior so it is always visible while moving continuously (no disappearing/reappearing) and still relocates on press/click",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Upgrade fireworks visuals to a live bursting fireworks animation (not a static overlay) for the celebration and finale backgrounds",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Change Page 3 finale to display a user-provided image instead of a video, keeping the caption “This could be us🤭” and Valentine/fireworks styling",
+      "summary": "Keep the “No” button next to the “Yes” button; shrink the “No” button after each press and remove it after 4 presses.",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "Valentine’s Day 3-page interactive website with moving No button, timed celebration page, and video finale",
+  "projectName": "Make the “No” button stay next to “Yes”, shrink per click, and disappear after 4 presses",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

@@ -1,30 +1,46 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import ValentineLayout from '@/components/ValentineLayout';
-import { useMovingNoButton } from '@/hooks/useMovingNoButton';
 
 interface QuestionPageProps {
   onYesClick: () => void;
 }
 
 export default function QuestionPage({ onYesClick }: QuestionPageProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const noButtonRef = useRef<HTMLButtonElement>(null);
-  
-  const { position, handleNoClick } = useMovingNoButton({
-    containerRef,
-    buttonRef: noButtonRef,
-  });
+  const [noClickCount, setNoClickCount] = useState(0);
+
+  const handleNoClick = () => {
+    setNoClickCount((prev) => prev + 1);
+  };
+
+  // Calculate scale based on click count (shrinks progressively)
+  const getNoButtonScale = () => {
+    switch (noClickCount) {
+      case 0:
+        return 1;
+      case 1:
+        return 0.75;
+      case 2:
+        return 0.5;
+      case 3:
+        return 0.25;
+      default:
+        return 0;
+    }
+  };
+
+  const noButtonScale = getNoButtonScale();
+  const shouldShowNoButton = noClickCount < 4;
 
   return (
     <ValentineLayout>
-      <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="text-center z-10 px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-12 text-valentine-primary animate-pulse">
             Will you be my valentine?🥺
           </h1>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button
               onClick={onYesClick}
               size="lg"
@@ -33,20 +49,19 @@ export default function QuestionPage({ onYesClick }: QuestionPageProps) {
               Yes 💕
             </Button>
             
-            <Button
-              ref={noButtonRef}
-              onClick={handleNoClick}
-              variant="outline"
-              size="sm"
-              className="text-base px-6 py-4 h-auto font-semibold border-2 border-valentine-muted hover:bg-valentine-muted/20 rounded-2xl will-change-transform"
-              style={{
-                position: 'absolute',
-                transform: `translate(${position.x}px, ${position.y}px)`,
-                transition: 'none',
-              }}
-            >
-              No
-            </Button>
+            {shouldShowNoButton && (
+              <Button
+                onClick={handleNoClick}
+                variant="outline"
+                size="sm"
+                className="text-base px-6 py-4 h-auto font-semibold border-2 border-valentine-muted hover:bg-valentine-muted/20 rounded-2xl transition-transform duration-300"
+                style={{
+                  transform: `scale(${noButtonScale})`,
+                }}
+              >
+                No
+              </Button>
+            )}
           </div>
         </div>
       </div>

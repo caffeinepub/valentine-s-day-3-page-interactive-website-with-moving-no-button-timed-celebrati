@@ -12,9 +12,9 @@ A beautiful three-page Valentine's Day experience built with React and TypeScrip
 
 To add your own image to the finale page:
 
-1. Place your image file at: `frontend/public/assets/IMG_6912.jpeg`
-2. The image will automatically display on Page 3
-3. If no image is found, a placeholder message will be shown instead
+1. Place your primary image at: `frontend/public/assets/IMG_6912-3.jpeg`
+2. (Optional) Place a fallback image at: `frontend/public/assets/IMG_6912-4.jpeg`
+3. The app will try to display `IMG_6912-3.jpeg` first, then fall back to `IMG_6912-4.jpeg` if the first image fails to load
+4. If neither image is found, a placeholder message will be shown instead
 
 ## Development
-

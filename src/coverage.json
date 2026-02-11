@@ -1,82 +1,58 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T16:23:28.980Z",
+  "generatedAt": "2026-02-11T06:17:31.646Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
-        "id": "REQ-12",
-        "summary": "Update Page 1 “No” button behavior so the button remains visible at all times while it moves (no disappearing/reappearing), and it continues to relocate immediately on click.",
+        "id": "REQ-1",
+        "summary": "Update the Question page so the “No” button is positioned next to the “Yes” button (in the same flex row/column flow) instead of being absolutely positioned and orbiting/moving around it.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useMovingNoButton.ts",
           "frontend/src/pages/QuestionPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useMovingNoButton.ts",
           "frontend/src/pages/QuestionPage.tsx"
         ]
       },
       {
-        "id": "REQ-13",
-        "summary": "Replace the current fireworks background implementation (static overlay pulse) with a live fireworks bursting animation for Page 2 (Celebration) and Page 3 (Finale).",
+        "id": "REQ-2",
+        "summary": "Implement click tracking for the “No” button on the Question page so that each press makes the “No” button smaller, and after 4 presses the “No” button is no longer visible and cannot be clicked.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/FireworksBackground.tsx",
-          "frontend/src/hooks/useFireworksAnimation.ts",
-          "frontend/src/index.css"
+          "frontend/src/pages/QuestionPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/FireworksBackground.tsx",
-          "frontend/src/hooks/useFireworksAnimation.ts",
-          "frontend/src/index.css"
+          "frontend/src/pages/QuestionPage.tsx"
         ]
       },
       {
-        "id": "REQ-14",
-        "summary": "Change Page 3 (Finale) to display the user-uploaded image IMG_6912.jpeg instead of a video, keeping the caption text “This could be us🤭” and the Valentine/fireworks styling.",
+        "id": "REQ-3",
+        "summary": "Remove (or stop using) the moving/orbiting “No” button behavior for the Question page so it no longer relies on the useMovingNoButton hook for layout/interaction.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/IMG_6912.jpeg",
-          "frontend/src/pages/FinalePage.tsx"
+          "frontend/src/pages/QuestionPage.tsx",
+          "frontend/src/hooks/useMovingNoButton.ts"
         ],
         "matchedFiles": [
-          "frontend/public/assets/IMG_6912.jpeg",
-          "frontend/src/pages/FinalePage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-15",
-        "summary": "Update project documentation to reflect that Page 3 uses an image instead of a video, including the expected filename and where it should be placed under frontend/public.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/README.md"
-        ],
-        "matchedFiles": [
-          "frontend/README.md"
+          "frontend/src/pages/QuestionPage.tsx",
+          "frontend/src/hooks/useMovingNoButton.ts"
         ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/README.md",
-    "frontend/public/assets/IMG_6912.jpeg",
-    "frontend/src/components/FireworksBackground.tsx",
-    "frontend/src/hooks/useFireworksAnimation.ts",
     "frontend/src/hooks/useMovingNoButton.ts",
-    "frontend/src/index.css",
-    "frontend/src/pages/FinalePage.tsx",
     "frontend/src/pages/QuestionPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",

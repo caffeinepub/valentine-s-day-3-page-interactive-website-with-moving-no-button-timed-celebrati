@@ -3,7 +3,18 @@ import ValentineLayout from '@/components/ValentineLayout';
 import FireworksBackground from '@/components/FireworksBackground';
 
 export default function FinalePage() {
+  const [imageSrc, setImageSrc] = useState('/assets/IMG_6912-3.jpeg');
   const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    // If primary image fails, try fallback
+    if (imageSrc === '/assets/IMG_6912-3.jpeg') {
+      setImageSrc('/assets/IMG_6912-4.jpeg');
+    } else {
+      // Both images failed, show placeholder
+      setImageError(true);
+    }
+  };
 
   return (
     <ValentineLayout showFireworks>
@@ -13,10 +24,10 @@ export default function FinalePage() {
           <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
             {!imageError ? (
               <img
-                src="/assets/IMG_6912.jpeg"
+                src={imageSrc}
                 alt="This could be us"
                 className="w-full max-w-2xl mx-auto rounded-2xl shadow-xl object-cover"
-                onError={() => setImageError(true)}
+                onError={handleImageError}
               />
             ) : (
               <div className="w-full max-w-2xl mx-auto aspect-video bg-valentine-muted/30 rounded-2xl flex items-center justify-center">
